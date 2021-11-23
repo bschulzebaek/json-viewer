@@ -14,7 +14,7 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'ts-loader',
             options: {
-                configFile: './config/tsconfig.json'
+                configFile: path.resolve('./config/tsconfig.json'),
             }
         }, {
             test: /\.html$/i,
