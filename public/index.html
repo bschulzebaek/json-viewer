@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="favicon.ico" />
         <title>JSON Viewer</title>
         <style>
             body {
@@ -16,11 +17,20 @@
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
+                background: #333;
+                color: #fff;
+            }
+
+            .link-github > svg {
+                width: 40px;
+                height: 40px;
             }
 
             .input {
                 width: 100%;
                 height: calc(50% - 1rem);
+                background: inherit;
+                color: inherit;
             }
 
             .output {
@@ -30,14 +40,15 @@
 
             @media only screen and (min-width: 868px) {
                 .input {
-                    flex: 0 0 50%;
-                    max-width: 460px;
+                    flex: 0 0 auto;
+                    width: 460px;
                     height: calc(100% - 1rem);
                 }
 
                 .output {
-                    flex: 1 0 50%;
+                    flex: 1 1 0;
                     height: 100%;
+                    overflow: auto;
                 }
             }
 
@@ -65,35 +76,58 @@
             }
 
             .output__inner {
-                padding: 0.5rem;
                 line-height: 1.2rem;
-                height: calc(100% - 1rem);
                 overflow: auto;
+                width: fit-content;
+                min-width: calc(100% - 1rem);
+                height: calc(100% - 1rem);
+                padding: 0.5rem;
             }
 
-            .output__inner .label {
-                cursor: pointer;
-            }
-
-            .output__inner .label.active > .state--opened,
-            .output__inner .label:not(.active) > .state--closed {
-                display: inline;
-            }
-
-            .output__inner .label:not(.active) > .state--opened,
-            .output__inner .label.active > .state--closed {
-                display: none;
-            }
-
-            .output__inner .tree {
-                display: none;
-                outline: 1px solid rgba(0, 0, 0, .3);
-                padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+            .tree {
                 margin: 0.25rem 0.25rem 0.25rem 0;
             }
 
-            .output__inner .tree.active {
+            .tree__head {
+                cursor: pointer;
+                display: inline-block;
+            }
+
+            .tree__body {
+                margin-top: 0.5rem;
+                padding: 0.5rem;
+                display: none;
+                outline: 1px dashed rgba(0, 0, 0, .3);
+                transition: outline .1s ease;
+            }
+
+            .tree:hover > .tree__body,
+            .tree:focus-within > .tree__body {
+                outline: 1px dashed rgba(255, 255, 255, .5);
+            }
+
+            .tree__row {
+                padding: 0.25rem;
+            }
+
+            .tree__row-column {
+
+            }
+
+            .tree--expand > .tree__body {
                 display: block;
+            }
+
+            .tree__head-close {
+                display: none;
+            }
+
+            .tree--expand > .tree__head > .tree__head-expand {
+                display: none;
+            }
+
+            .tree--expand > .tree__head > .tree__head-close {
+                display: inline;
             }
         </style>
     </head>

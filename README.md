@@ -1,5 +1,7 @@
 # JSON Viewer
 
+This project contains a simple JSON viewer. Just paste your JSON and explore those nested objects. The last valid query (including an empty textarea) will be stored in localStorage.
+
 ## Local development
 
 Clone and install dependencies

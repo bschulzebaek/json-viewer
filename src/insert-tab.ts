@@ -3,7 +3,7 @@ export default function(event: KeyboardEvent) {
         return;
     }
 
-    const textarea = event.target as HTMLInputElement;
+    const textarea = event.target as HTMLTextAreaElement;
 
     event.preventDefault();
     textarea.setRangeText(

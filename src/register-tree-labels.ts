@@ -1,23 +1,18 @@
-function onClickLabel(label: HTMLElement) {
-    const tree = label.nextElementSibling;
-    label.classList.toggle('active');
-    tree.classList.toggle('active');
+function onClickHead(head: HTMLElement) {
+    const tree = head.parentElement,
+          body = head.nextElementSibling;
 
-    if (!tree.classList.contains('active')) {
-        const activeElements = tree.querySelectorAll('.active');
-        console.log(activeElements)
-        activeElements.forEach((el) => el.classList.remove('active'));
-    }
+    tree.classList.toggle('tree--expand');
 }
 
 export default function() {
     window.addEventListener('click', (event) => {
-        const label = (event.target as HTMLElement).closest('.label');
+        const head = (event.target as HTMLElement).closest('.tree__head');
 
-        if (!label) {
+        if (!head) {
             return;
         }
 
-        onClickLabel(label as HTMLElement);
+        onClickHead(head as HTMLElement);
     });
 }
