@@ -4,7 +4,7 @@ const RPAREN = "}";
 const LBRACK = "[";
 const RBRACK = "]";
 
-const CHARS_REQUIRE_PAIR = {
+const CHARS_REQUIRE_PAIR: Record<string, string> = {
     [SINGLE_QUOTE]: SINGLE_QUOTE,
     [LPAREN]: RPAREN,
     [LBRACK]: RBRACK
