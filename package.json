@@ -1,14 +1,13 @@
 {
-    "name": "typescript-boilerplate",
-    "version": "0.0.0",
+    "name": "json-viewer",
+    "version": "0.0.1",
     "description": "",
     "scripts": {
         "dev": "webpack serve --open --config config/webpack.dev.js",
         "build": "webpack --config config/webpack.prod.js"
     },
-    "keywords": [],
     "author": "Benedikt Schulze Baek <benedikt@schulze-baek.de>",
-    "license": "",
+    "license": "MIT",
     "devDependencies": {
         "clean-webpack-plugin": "^4.0.0",
         "copy-webpack-plugin": "^10.0.0",

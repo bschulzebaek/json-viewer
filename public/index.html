@@ -4,9 +4,109 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TypeScript Boilerplate</title>
+        <title>JSON Viewer</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+                font-size: 1rem;
+                overflow: hidden;
+                height: 100vh;
+                width: 100vw;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .input,
+            .output {
+                width: 100%;
+                height: 50%;
+            }
+
+            @media only screen and (min-width: 868px) {
+                .input,
+                .output {
+                    height: 100%;
+                }
+
+                .input {
+                    flex: 0 0 50%;
+                    max-width: 460px;
+                }
+
+                .output {
+                    flex: 1 0 50%;
+                }
+            }
+
+            .input {
+                padding: 0.5rem;
+                border: none;
+                resize: horizontal;
+                box-shadow: inset 0 0 10px rgb(0 0 0 / 30%);
+            }
+
+            .input:focus {
+                outline: none;
+            }
+
+            .output {
+                position: relative;
+            }
+
+            .output > .placeholder {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+                text-align: center;
+            }
+
+            .output__inner {
+                padding: 0.5rem;
+                line-height: 1.2rem;
+                height: calc(100% - 1rem);
+                overflow: auto;
+            }
+
+            .output__inner .label {
+                cursor: pointer;
+            }
+
+            .output__inner .label.active > .state--opened,
+            .output__inner .label:not(.active) > .state--closed {
+                display: inline;
+            }
+
+            .output__inner .label:not(.active) > .state--opened,
+            .output__inner .label.active > .state--closed {
+                display: none;
+            }
+
+            .output__inner .tree {
+                display: none;
+                outline: 1px solid rgba(0, 0, 0, .3);
+                padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+                margin: 0.25rem 0.25rem 0.25rem 0;
+            }
+
+            .output__inner .tree.active {
+                display: block;
+            }
+        </style>
     </head>
     <body>
-        Hello World!
+        <textarea
+            class="input"
+            name="input"
+            cols="50"
+            rows="30"
+            placeholder="Paste raw JSON"
+        ></textarea>
+        <div class="output">
+            <span class="placeholder">Formatted JSON will be printed here</span>
+            <div class="output__inner"></div>
+        </div>
     </body>
 </html>
